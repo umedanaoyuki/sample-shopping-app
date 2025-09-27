@@ -27,3 +27,9 @@ export const getDetail = async (
   });
   return detailData;
 };
+
+if (!process.env.MICROCMS_WEBHHOK_SECRETKEY) {
+  throw new Error("STRIPE_SECRET_KEY is required");
+}
+
+export const microcmsWebhookSecretkey = process.env.MICROCMS_WEBHHOK_SECRETKEY;
