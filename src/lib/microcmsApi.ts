@@ -7,6 +7,7 @@ export const client = createClient({
   serviceDomain: serviceDomain,
   apiKey: apiKey,
 });
+
 export const getList = async (queries?: MicroCMSQueries) => {
   const listData = await client.getList<Products>({
     endpoint: "products",

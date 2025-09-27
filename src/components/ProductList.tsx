@@ -21,7 +21,10 @@ export default function ProductList({ data }: Props) {
                 alt="thumbnail"
                 className="rounded-lg"
                 width={300}
-                height={400}
+                height={200}
+                unoptimized={true} // 追加
+                priority={false}
+                loading="lazy"
               />
             </div>
 
