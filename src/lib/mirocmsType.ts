@@ -1,4 +1,8 @@
-import { MicroCMSImage } from "microcms-js-sdk";
+import {
+  MicroCMSContentId,
+  MicroCMSDate,
+  MicroCMSImage,
+} from "microcms-js-sdk";
 
 export type Products = {
   name: string;
@@ -8,3 +12,5 @@ export type Products = {
   richDescription: string;
   price: number;
 };
+
+export type Article = Products & MicroCMSContentId & MicroCMSDate;
