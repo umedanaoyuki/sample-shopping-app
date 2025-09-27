@@ -90,6 +90,21 @@ export default async function Detail({ params }: Props) {
               <span className="text-3xl mx-3">{data.price}</span>円（税込）
             </p>
           </div>
+          <form action={`/api/${awaitParams.id}/checkout`} method="post">
+            <div>
+              <button
+                type="submit"
+                className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              >
+                購入手続きへ
+              </button>
+            </div>
+            <input type="hidden" name="amount" value={data.price} />
+            <input type="hidden" name="name" value={data.name} />
+            {data.thumbnail?.url ? (
+              <input type="hidden" name="image" value={data.thumbnail?.url} />
+            ) : null}
+          </form>
         </div>
       </div>
     </div>
