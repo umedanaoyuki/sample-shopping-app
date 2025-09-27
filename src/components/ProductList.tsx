@@ -19,8 +19,9 @@ export default function ProductList({ data }: Props) {
               <Image
                 src={detail.thumbnail?.url}
                 alt="thumbnail"
-                fill
                 className="rounded-lg"
+                width={300}
+                height={400}
               />
             </div>
 
