@@ -23,10 +23,10 @@ export async function POST(
     .list({
       product: productId,
     })
-    .then((data) => data[0])
-    .catch((e) => {
-      id: null;
-    });
+    .then(({ data }) => data[0])
+    .catch((e) => ({
+      id: null,
+    }));
 
   if (!priceId) {
     const product = await stripe.products.create({
@@ -54,7 +54,7 @@ export async function POST(
       },
     ],
     cancel_url: referer,
-    success_url: `${origin} ?success=true`,
+    success_url: `${origin}?success=true`,
   });
 
   if (session.url) {
