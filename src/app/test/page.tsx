@@ -43,9 +43,13 @@ export default function Test() {
 
   // ページネーション計算
   const totalItems = todos.length;
+  // ページネーションで表示するページ数
   const totalPages = Math.ceil(totalItems / itemsPerPage);
+  // TODO配列の表示開始インデックス
   const startIndex = (currentPage - 1) * itemsPerPage;
+  // TODO配列の表示終了インデックス（1ページあたりの表示数）
   const endIndex = startIndex + itemsPerPage;
+  // 現在のページに表示するTODO配列
   const currentTodos = todos.slice(startIndex, endIndex);
 
   // ページ変更関数
@@ -56,8 +60,11 @@ export default function Test() {
   /**
    * ページネーションロジック
    */
+  // ページネーションの数
   const maxVisiblePages = 5;
+  // 1ページから前は表示しないように制限
   let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+  // 最後のページから後は表示しないように制限
   const endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
 
   // 最後のページが表示範囲に含まれる場合、開始ページを調整
@@ -65,7 +72,7 @@ export default function Test() {
     startPage = Math.max(1, endPage - maxVisiblePages + 1);
   }
 
-  const pages = [];
+  const pages: number[] = [];
   for (let page = startPage; page <= endPage; page++) {
     pages.push(page);
   }
@@ -125,6 +132,7 @@ export default function Test() {
       {/* ページネーション */}
       {totalPages > 1 && (
         <div className="flex justify-center items-center space-x-2">
+          {/* 最初のページボタン */}
           <button
             onClick={() => handlePageChange(1)}
             disabled={currentPage === 1}
@@ -176,6 +184,7 @@ export default function Test() {
           >
             {">"}
           </button>
+          {/* 最後のページボタン */}
           <button
             onClick={() => handlePageChange(totalPages)}
             disabled={currentPage === totalPages}
